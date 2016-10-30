@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<?php 
+/**
+ * Form.php
+ * This file contains the only form for this application
+ * all interface modification may be done here
+ *
+ *	@copyright Dominance of Kaugebra 2016
+ *	@copyright KATS 2016
+ *	@version 1.0
+ *
+ */
+?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">

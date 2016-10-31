@@ -53,13 +53,19 @@ class DocumentMerge{
 		$this -> filePresented = false;
 	}
 	
+	/**
+	 * prepareCoverPage
+	 * 
+	 * This function generates a cover page of electronic document
+	 * 
+	 */
 	public function prepareCoverPage(){
 		// Generate Cover Page filenaem
 		$this-> coverPageFileName = uniqid().'.pdf';
 		// Prepare PDF
 		$pdf = new FPDF('P','mm','A4');
 		$pdf -> AddPage();
-		$pdf ->Image(dirname(__FILE__).'/2027.X.jpg',0,0,213);
+		$pdf ->Image(dirname(__FILE__).'/2027.X.jpg',0,0,213); // Note: This is the template generated from original word form
 		// Enter Field Information
 		$pdf -> SetFont('helvetica','B',16);
 		$pdf -> Ln(35);
@@ -72,7 +78,7 @@ class DocumentMerge{
 		$pdf -> Cell(0,0,$this->additional_info);
 		$pdf -> Ln(60);
 		$pdf -> SetFont('helvetica','',10);
-		$pdf -> Cell(0,0,$this->description);
+		$pdf -> Cell(0,0,$this->description); // This is the addon line stating the form is populated by this application
 		$pdf -> Ln(20);
 		$pdf -> SetFont('helvetica','B',16);
 		$pdf -> Cell(90,0,$this->personnel);
@@ -93,6 +99,7 @@ class DocumentMerge{
 			$this -> filePresented = true;
 		} else {
 			error("Sorry, there was an error uploading your file.");
+			// this should stop the application from running further
 		}
 	}	
 	
@@ -104,7 +111,7 @@ class DocumentMerge{
 			$mergePdf -> setSourceFile($this -> fileDirectory.$this->coverPageFileName);
 			$mergePdf -> AddPage();
 			$mergePdf -> useTemplate($mergePdf->importPage(1));
-		if ($this->filePresented){
+		if ($this->filePresented){ // this is a provision allowing only the cover page is exported. Note that the form is not valide unless it is attached by purchase record.
 			// import document part
 			$pageCount = $mergePdf -> setSourceFile($this -> fileDirectory.$this->documentFileName);
 			for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {

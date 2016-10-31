@@ -1,7 +1,7 @@
 <?php
 /**
  * Router.php
- * This file directs navigation for this application
+ * This file directs navigation and operation for this application
  * 
  * If there is no post request
  * The page is shown
@@ -24,7 +24,7 @@ class Router{
 			$serial = $_POST['serial'];
 			$provider = $_POST['provider'];
 			$type = $_POST['type'];
-			$description = "This form is inserted by...";
+			$description = APPLICATION_DECL;
 			$personnel = $_POST['personnel'];
 			$signature = $personnel;
 			$additional_info = $_POST['addition'];

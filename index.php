@@ -16,6 +16,7 @@ foreach (glob("Controller/*.php") as $filename)
 }
 
 define('PROJECT_DIR', __DIR__);
+define('APPLICATION_DECL','This form is prepared by F&CS PDF Merger.');
 
 
 $router = new Router();
